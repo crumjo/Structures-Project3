@@ -1,5 +1,7 @@
 %{
     #include <stdio.h>
+    int yylex();
+    void yyerror(const char *s);
 %}
 
 %token START
@@ -27,4 +29,8 @@ int main(int argc, char** argv)
 {
     yyparse();
     return 0;
+}
+
+void yyerror (char const *s) {
+    fprintf (stderr, "%s\n", s);
 }

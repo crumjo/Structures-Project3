@@ -11,9 +11,3 @@
 ;          { yylval = atoi(yytext); return END_STATEMENT; }
 
 %%
-
-int main(int argc, char** argv)
-{
-	yylex();
-	return 0;	
-}

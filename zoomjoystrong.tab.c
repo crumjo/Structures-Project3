@@ -97,6 +97,8 @@
 #line 1 "zoomjoystrong.y"
 
     #include <stdio.h>
+    int yylex();
+    void yyerror(const char *s);
 
 
 /* Enabling traces.  */
@@ -130,7 +132,7 @@ typedef int YYSTYPE;
 
 
 /* Line 216 of yacc.c.  */
-#line 134 "zoomjoystrong.tab.c"
+#line 136 "zoomjoystrong.tab.c"
 
 #ifdef short
 # undef short
@@ -413,7 +415,7 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    18,    18,    19,    20,    22
+       0,    20,    20,    21,    22,    24
 };
 #endif
 
@@ -1312,13 +1314,13 @@ yyreduce:
   switch (yyn)
     {
         case 5:
-#line 22 "zoomjoystrong.y"
+#line 24 "zoomjoystrong.y"
     { printf("Here is an INT."); ;}
     break;
 
 
 /* Line 1267 of yacc.c.  */
-#line 1322 "zoomjoystrong.tab.c"
+#line 1324 "zoomjoystrong.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1532,12 +1534,16 @@ yyreturn:
 }
 
 
-#line 24 "zoomjoystrong.y"
+#line 26 "zoomjoystrong.y"
 
 
 int main(int argc, char** argv)
 {
     yyparse();
     return 0;
+}
+
+void yyerror (char const *s) {
+    fprintf (stderr, "%s\n", s);
 }
 
