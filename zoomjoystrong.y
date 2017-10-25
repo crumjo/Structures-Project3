@@ -21,8 +21,10 @@ program:          START statement_list END;
 statement_list:     statement
                 |   statement statement_list
                 ;
-statement:      INT     { printf("Here is an INT."); }
+statement:      CIRCLE;
 
+
+semicolon: END_STATEMENT
 %%
 
 int main(int argc, char** argv)

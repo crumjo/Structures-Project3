@@ -8,6 +8,6 @@
 
 %%
 
-;          { yylval = atoi(yytext); return END_STATEMENT; }
+"circle"                { printf("Here\n"); return(CIRCLE); }
 
 %%

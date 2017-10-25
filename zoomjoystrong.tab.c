@@ -409,7 +409,7 @@ static const yytype_uint8 yyprhs[] =
 static const yytype_int8 yyrhs[] =
 {
       14,     0,    -1,     3,    15,     4,    -1,    16,    -1,    16,
-      15,    -1,    11,    -1
+      15,    -1,     8,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
@@ -468,16 +468,16 @@ static const yytype_int8 yydefgoto[] =
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -11
+#define YYPACT_NINF -8
 static const yytype_int8 yypact[] =
 {
-      -3,   -10,     2,   -11,    -1,   -10,   -11,   -11,   -11
+      -3,    -7,     2,    -8,    -1,    -7,    -8,    -8,    -8
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -11,   -11,     0,   -11
+      -8,    -8,     0,    -8
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -492,14 +492,14 @@ static const yytype_uint8 yytable[] =
 
 static const yytype_int8 yycheck[] =
 {
-       3,    11,     0,     4,    -1,     5
+       3,     8,     0,     4,    -1,     5
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     3,    14,    11,    15,    16,     0,     4,    15
+       0,     3,    14,     8,    15,    16,     0,     4,    15
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1313,14 +1313,9 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 5:
-#line 24 "zoomjoystrong.y"
-    { printf("Here is an INT."); ;}
-    break;
-
-
+      
 /* Line 1267 of yacc.c.  */
-#line 1324 "zoomjoystrong.tab.c"
+#line 1319 "zoomjoystrong.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1534,7 +1529,7 @@ yyreturn:
 }
 
 
-#line 26 "zoomjoystrong.y"
+#line 28 "zoomjoystrong.y"
 
 
 int main(int argc, char** argv)
