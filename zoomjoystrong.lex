@@ -1,22 +1,14 @@
 %{
 	#include <stdio.h>
 	#include <stdlib.h>
-
+    #include "zoomjoystrong.tab.c"
 %}
-
-%token END_STATEMENT
-%token POINT
-%token LINE
-%token CIRCLE
-%token RECTANGLE
-%token SET_COLOR
-%token INT
-%token FLOAT
-%token END
 
 %option noyywrap
 
 %%
+
+;          { yylval = atoi(yytext); return END_STATEMENT; }
 
 %%
 
