@@ -3,6 +3,7 @@
     #include "zoomjoystrong.h"
     int yylex();
     void yyerror(const char *s);
+    extern char* yytext;
 %}
 
 %start program
@@ -55,10 +56,13 @@ set_color:  SET_COLOR INT INT INT END_STATEMENT        { set_color($2, $3, $4); 
 
 int main(int argc, char** argv)
 {
+	setup();
 	return(yyparse());
 }
 
 void yyerror (char const *s)
 {
+	fprintf (stderr, "TOKEN: %s\n", yytext);
 	fprintf (stderr, "%s\n", s);
 }
+

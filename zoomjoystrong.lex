@@ -10,9 +10,9 @@
 
 %%
 
-end			{ return(END); }
+end			    { return(END); }
 
-;			{ return(END_STATEMENT); }
+;			    { return(END_STATEMENT); }
 
 point			{ return(POINT); }
 
@@ -24,15 +24,18 @@ rectangle		{ return(RECTANGLE); }
 
 set_color		{ return(SET_COLOR); }
 
-[0-9]			{
-				c = yytext[0];
-				yylval.d = c - '0';
-				return(INT);
-			}
+[0-9]+			{
+				    yylval.d = atoi(yytext);
+				    return(INT);
+			    }
 
-[0-9]*\.[0-9]+		{
-				c = yytext[0]; 
-                                yylval.d = c - '0';
-                                return(FLOAT);	
-			}
+[0-9]*\.[0-9]+	{
+				    c = yytext[0]; 
+                    yylval.d = c - '0';
+                    return(FLOAT);	
+                }
+                
+[ \t ]          ;
+\n		;
+
 %%

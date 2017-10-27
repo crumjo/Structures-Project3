@@ -39,39 +39,40 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     START = 258,
-     END = 259,
-     END_STATEMENT = 260,
-     POINT = 261,
-     LINE = 262,
-     CIRCLE = 263,
-     RECTANGLE = 264,
-     SET_COLOR = 265,
-     INT = 266,
-     FLOAT = 267
+     END = 258,
+     END_STATEMENT = 259,
+     POINT = 260,
+     LINE = 261,
+     CIRCLE = 262,
+     RECTANGLE = 263,
+     SET_COLOR = 264,
+     INT = 265,
+     FLOAT = 266
    };
 #endif
 /* Tokens.  */
-#define START 258
-#define END 259
-#define END_STATEMENT 260
-#define POINT 261
-#define LINE 262
-#define CIRCLE 263
-#define RECTANGLE 264
-#define SET_COLOR 265
-#define INT 266
-#define FLOAT 267
+#define END 258
+#define END_STATEMENT 259
+#define POINT 260
+#define LINE 261
+#define CIRCLE 262
+#define RECTANGLE 263
+#define SET_COLOR 264
+#define INT 265
+#define FLOAT 266
 
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 7 "zoomjoystrong.y"
-{ int a; }
+#line 11 "zoomjoystrong.y"
+{
+    int d;
+    float f;
+}
 /* Line 1529 of yacc.c.  */
-#line 75 "zoomjoystrong.tab.h"
+#line 76 "zoomjoystrong.tab.h"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
