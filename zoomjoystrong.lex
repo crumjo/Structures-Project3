@@ -10,41 +10,19 @@
 
 %%
 
-END			{
-				c = yytext[0]; 
-                                yylval.a = c - '0';
-                                return(END);
-			}
+end			{ return(END); }
 
-;			{
-				c = yytext[0];
-				return(END_STATEMENT);
-			}
+;			{ return(END_STATEMENT); }
 
-POINT			{ 
-				c = yytext[0];
-				return(POINT);
-			}
+point			{ return(POINT); }
 
-LINE			{
-				c = yytext[0];
-				return(LINE);
-			}
+line			{ return(LINE); }
 
-CIRCLE			{
-				c = yytext[0];
-				return(CIRCLE);
-			}
+circle			{ return(CIRCLE); }
 
-RECTANGLE		{
-				c = yytext[0];  
-                                return(RECTANGLE);
-			}
+rectangle		{ return(RECTANGLE); }
 
-SET_COLOR		{
-				c = yytext[0];  
-                                return(SET_COLOR);
-			}
+set_color		{ return(SET_COLOR); }
 
 [0-9]			{
 				c = yytext[0];

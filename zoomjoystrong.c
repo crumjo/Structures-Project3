@@ -7,7 +7,7 @@ struct color current;
 void setup(){
 	window = SDL_CreateWindow
 		(
-		 "zoomjoystrong", SDL_WINDOWPOS_UNDEFINED,
+		 "ZoomJoyStrong", SDL_WINDOWPOS_UNDEFINED,
 		 SDL_WINDOWPOS_UNDEFINED,
 		 WIDTH,
 		 HEIGHT,
