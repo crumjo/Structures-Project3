@@ -350,18 +350,18 @@ union yyalloc
 #endif
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  6
+#define YYFINAL  12
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   5
+#define YYLAST   10
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  13
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  4
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  5
+#define YYNRULES  11
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  9
+#define YYNSTATES  15
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
@@ -407,20 +407,23 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3,     7,     9,    12
+       0,     0,     3,     7,     9,    12,    14,    16,    18,    20,
+      22,    24
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
       14,     0,    -1,     3,    15,     4,    -1,    16,    -1,    16,
-      15,    -1,     8,    -1
+      15,    -1,    11,    -1,     6,    -1,     7,    -1,     8,    -1,
+       9,    -1,    10,    -1,    12,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    22,    22,    23,    24,    27
+       0,    22,    22,    23,    24,    27,    28,    29,    30,    31,
+      32,    33
 };
 #endif
 
@@ -448,13 +451,15 @@ static const yytype_uint16 yytoknum[] =
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    13,    14,    15,    15,    16
+       0,    13,    14,    15,    15,    16,    16,    16,    16,    16,
+      16,    16
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     3,     1,     2,     1
+       0,     2,     3,     1,     2,     1,     1,     1,     1,     1,
+       1,     1
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -462,27 +467,29 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       0,     0,     0,     5,     0,     3,     1,     2,     4
+       0,     0,     0,     6,     7,     8,     9,    10,     5,    11,
+       0,     3,     1,     2,     4
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     2,     4,     5
+      -1,     2,    10,    11
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -8
+#define YYPACT_NINF -7
 static const yytype_int8 yypact[] =
 {
-      -3,    -7,     2,    -8,    -1,    -7,    -8,    -8,    -8
+       4,    -6,     8,    -7,    -7,    -7,    -7,    -7,    -7,    -7,
+       5,    -6,    -7,    -7,    -7
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -8,    -8,     0,    -8
+      -7,    -7,    -1,    -7
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -492,19 +499,22 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-       1,     3,     6,     7,     0,     8
+       3,     4,     5,     6,     7,     8,     9,     1,    12,    13,
+      14
 };
 
-static const yytype_int8 yycheck[] =
+static const yytype_uint8 yycheck[] =
 {
-       3,     8,     0,     4,    -1,     5
+       6,     7,     8,     9,    10,    11,    12,     3,     0,     4,
+      11
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     3,    14,     8,    15,    16,     0,     4,    15
+       0,     3,    14,     6,     7,     8,     9,    10,    11,    12,
+      15,    16,     0,     4,    15
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1320,7 +1330,7 @@ yyreduce:
     {
       
 /* Line 1267 of yacc.c.  */
-#line 1324 "zoomjoystrong.tab.c"
+#line 1334 "zoomjoystrong.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1534,17 +1544,16 @@ yyreturn:
 }
 
 
-#line 28 "zoomjoystrong.y"
+#line 36 "zoomjoystrong.y"
 
 
 int main(int argc, char** argv)
 {
-    yyparse();
-    return 0;
+	return(yyparse());
 }
 
 void yyerror (char const *s)
 {
-    fprintf (stderr, "%s\n", s);
+	fprintf (stderr, "%s\n", s);
 }
 

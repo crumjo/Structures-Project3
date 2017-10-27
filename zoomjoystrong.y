@@ -19,21 +19,28 @@
 
 %%
 
-program:	    START statement_list END;
-statement_list:     statement
-                |   statement statement_list
-                ;
+program:		START statement_list END;
+statement_list:		statement
+	      |		statement statement_list
+	      ;
 
-statement:	CIRCLE;
+statement:		INT;
+         |		POINT
+         |		LINE
+         |		CIRCLE
+         |		RECTANGLE
+         |		SET_COLOR
+         |		FLOAT
+         ;
+
 %%
 
 int main(int argc, char** argv)
 {
-    yyparse();
-    return 0;
+	return(yyparse());
 }
 
 void yyerror (char const *s)
 {
-    fprintf (stderr, "%s\n", s);
+	fprintf (stderr, "%s\n", s);
 }
