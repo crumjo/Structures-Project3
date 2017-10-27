@@ -97,6 +97,7 @@
     #include <stdio.h>
     #include "zoomjoystrong.h"
     int yylex();
+    char* msg = "Point out of range. Enter a height within 0 and 768 and a width within 0 and 1024.\n";
     void yyerror(const char *s);
     extern char* yytext;
 
@@ -121,13 +122,13 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 11 "zoomjoystrong.y"
+#line 12 "zoomjoystrong.y"
 {
     int d;
     float f;
 }
 /* Line 193 of yacc.c.  */
-#line 131 "zoomjoystrong.tab.c"
+#line 132 "zoomjoystrong.tab.c"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -140,7 +141,7 @@ typedef union YYSTYPE
 
 
 /* Line 216 of yacc.c.  */
-#line 144 "zoomjoystrong.tab.c"
+#line 145 "zoomjoystrong.tab.c"
 
 #ifdef short
 # undef short
@@ -428,8 +429,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    30,    30,    31,    32,    35,    36,    37,    38,    39,
-      40,    41,    42,    45,    47,    49,    51,    53
+       0,    31,    31,    32,    33,    36,    37,    38,    39,    40,
+      41,    42,    43,    46,    54,    62,    70,    78
 };
 #endif
 
@@ -1349,33 +1350,63 @@ yyreduce:
   switch (yyn)
     {
         case 13:
-#line 45 "zoomjoystrong.y"
-    { point((yyvsp[(2) - (4)].d), (yyvsp[(3) - (4)].d)); ;}
+#line 46 "zoomjoystrong.y"
+    {
+                                                            if ((yyvsp[(2) - (4)].d) > WIDTH || (yyvsp[(3) - (4)].d) > HEIGHT) {
+                                                                printf("%s", msg);
+                                                            } else {
+                                                                point((yyvsp[(2) - (4)].d), (yyvsp[(3) - (4)].d));
+                                                            }
+                                                        ;}
     break;
 
   case 14:
-#line 47 "zoomjoystrong.y"
-    { line((yyvsp[(2) - (6)].d), (yyvsp[(3) - (6)].d), (yyvsp[(4) - (6)].d), (yyvsp[(5) - (6)].d)); ;}
+#line 54 "zoomjoystrong.y"
+    {
+                                                            if ((yyvsp[(2) - (6)].d) > WIDTH || (yyvsp[(3) - (6)].d) > HEIGHT || (yyvsp[(4) - (6)].d) > WIDTH || (yyvsp[(5) - (6)].d) > HEIGHT) {
+                                                                printf("%s", msg);
+                                                            } else {
+                                                                line((yyvsp[(2) - (6)].d), (yyvsp[(3) - (6)].d), (yyvsp[(4) - (6)].d), (yyvsp[(5) - (6)].d));
+                                                            }
+                                                        ;}
     break;
 
   case 15:
-#line 49 "zoomjoystrong.y"
-    { circle((yyvsp[(2) - (5)].d), (yyvsp[(3) - (5)].d), (yyvsp[(4) - (5)].d)); ;}
+#line 62 "zoomjoystrong.y"
+    {
+                                                            if ((yyvsp[(2) - (5)].d) > WIDTH || (yyvsp[(3) - (5)].d) > HEIGHT) {
+                                                                printf("%s", msg);
+                                                            } else {
+                                                                circle((yyvsp[(2) - (5)].d), (yyvsp[(3) - (5)].d), (yyvsp[(4) - (5)].d));
+                                                            }
+                                                        ;}
     break;
 
   case 16:
-#line 51 "zoomjoystrong.y"
-    { rectangle((yyvsp[(2) - (6)].d), (yyvsp[(3) - (6)].d), (yyvsp[(4) - (6)].d), (yyvsp[(5) - (6)].d)); ;}
+#line 70 "zoomjoystrong.y"
+    {
+                                                            if ((yyvsp[(2) - (6)].d) > WIDTH || (yyvsp[(3) - (6)].d) > HEIGHT) {
+                                                                printf("%s", msg);
+                                                            } else {
+                                                                rectangle((yyvsp[(2) - (6)].d), (yyvsp[(3) - (6)].d), (yyvsp[(4) - (6)].d), (yyvsp[(5) - (6)].d));
+                                                            }
+                                                        ;}
     break;
 
   case 17:
-#line 53 "zoomjoystrong.y"
-    { set_color((yyvsp[(2) - (5)].d), (yyvsp[(3) - (5)].d), (yyvsp[(4) - (5)].d)); ;}
+#line 78 "zoomjoystrong.y"
+    {
+                                                            if ((yyvsp[(2) - (5)].d) > 255 || (yyvsp[(3) - (5)].d) > 255 || (yyvsp[(4) - (5)].d) > 255) {
+                                                                printf("Enter a value between 0 and 255.\n");
+                                                            } else {
+                                                                set_color((yyvsp[(2) - (5)].d), (yyvsp[(3) - (5)].d), (yyvsp[(4) - (5)].d));
+                                                            }
+                                                        ;}
     break;
 
 
 /* Line 1267 of yacc.c.  */
-#line 1379 "zoomjoystrong.tab.c"
+#line 1410 "zoomjoystrong.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1589,7 +1620,7 @@ yyreturn:
 }
 
 
-#line 55 "zoomjoystrong.y"
+#line 86 "zoomjoystrong.y"
 
 
 int main(int argc, char** argv)

@@ -36,6 +36,7 @@ set_color		{ return(SET_COLOR); }
                 }
                 
 [ \t ]          ;
-\n		;
+\n		        ;
+.               ;
 
 %%
