@@ -4,6 +4,8 @@
     void yyerror(const char *s);
 %}
 
+%union { int a; }
+
 %token START
 %token END
 %token END_STATEMENT
@@ -17,14 +19,12 @@
 
 %%
 
-program:          START statement_list END;
+program:	    START statement_list END;
 statement_list:     statement
                 |   statement statement_list
                 ;
-statement:      CIRCLE;
 
-
-semicolon: END_STATEMENT
+statement:	CIRCLE;
 %%
 
 int main(int argc, char** argv)
@@ -33,6 +33,7 @@ int main(int argc, char** argv)
     return 0;
 }
 
-void yyerror (char const *s) {
+void yyerror (char const *s)
+{
     fprintf (stderr, "%s\n", s);
 }

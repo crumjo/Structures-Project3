@@ -120,7 +120,12 @@
 #endif
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+typedef union YYSTYPE
+#line 7 "zoomjoystrong.y"
+{ int a; }
+/* Line 193 of yacc.c.  */
+#line 128 "zoomjoystrong.tab.c"
+	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 # define YYSTYPE_IS_TRIVIAL 1
@@ -132,7 +137,7 @@ typedef int YYSTYPE;
 
 
 /* Line 216 of yacc.c.  */
-#line 136 "zoomjoystrong.tab.c"
+#line 141 "zoomjoystrong.tab.c"
 
 #ifdef short
 # undef short
@@ -415,7 +420,7 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    20,    20,    21,    22,    24
+       0,    22,    22,    23,    24,    27
 };
 #endif
 
@@ -1315,7 +1320,7 @@ yyreduce:
     {
       
 /* Line 1267 of yacc.c.  */
-#line 1319 "zoomjoystrong.tab.c"
+#line 1324 "zoomjoystrong.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1538,7 +1543,8 @@ int main(int argc, char** argv)
     return 0;
 }
 
-void yyerror (char const *s) {
+void yyerror (char const *s)
+{
     fprintf (stderr, "%s\n", s);
 }
 
