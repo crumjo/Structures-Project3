@@ -1,10 +1,16 @@
 %{
     #include <stdio.h>
+    #include "zoomjoystrong.h"
     int yylex();
     void yyerror(const char *s);
 %}
 
-%union { int a; }
+%start program
+
+%union {
+    int d;
+    float f;
+}
 
 %token END
 %token END_STATEMENT
