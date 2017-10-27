@@ -26,13 +26,13 @@ set_color		{ return(SET_COLOR); }
 
 [0-9]			{
 				c = yytext[0];
-				yylval.a = c - '0';
+				yylval.d = c - '0';
 				return(INT);
 			}
 
 [0-9]*\.[0-9]+		{
 				c = yytext[0]; 
-                                yylval.a = c - '0';
+                                yylval.d = c - '0';
                                 return(FLOAT);	
 			}
 %%
