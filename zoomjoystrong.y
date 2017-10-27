@@ -43,7 +43,7 @@ statement:      INT
          |      END_STATEMENT
          ;
 
-point:      POINT INT INT END_STATEMENT                 {
+point:      POINT INT INT                               {
                                                             if ($2 > WIDTH || $3 > HEIGHT) {
                                                                 printf("%s", msg);
                                                             } else {
@@ -51,7 +51,7 @@ point:      POINT INT INT END_STATEMENT                 {
                                                             }
                                                         }
 
-line:       LINE INT INT INT INT END_STATEMENT          {
+line:       LINE INT INT INT INT                        {
                                                             if ($2 > WIDTH || $3 > HEIGHT || $4 > WIDTH || $5 > HEIGHT) {
                                                                 printf("%s", msg);
                                                             } else {
@@ -59,7 +59,7 @@ line:       LINE INT INT INT INT END_STATEMENT          {
                                                             }
                                                         }
 
-circle:     CIRCLE INT INT INT END_STATEMENT            {
+circle:     CIRCLE INT INT INT                          {
                                                             if ($2 > WIDTH || $3 > HEIGHT) {
                                                                 printf("%s", msg);
                                                             } else {
@@ -67,7 +67,7 @@ circle:     CIRCLE INT INT INT END_STATEMENT            {
                                                             }
                                                         }
 
-rectangle:  RECTANGLE INT INT INT INT END_STATEMENT     {
+rectangle:  RECTANGLE INT INT INT INT                   {
                                                             if ($2 > WIDTH || $3 > HEIGHT) {
                                                                 printf("%s", msg);
                                                             } else {
@@ -75,7 +75,7 @@ rectangle:  RECTANGLE INT INT INT INT END_STATEMENT     {
                                                             }
                                                         }
 
-set_color:  SET_COLOR INT INT INT END_STATEMENT         {
+set_color:  SET_COLOR INT INT INT                       {
                                                             if ($2 > 255 || $3 > 255 || $4 > 255) {
                                                                 printf("Enter a value between 0 and 255.\n");
                                                             } else {
