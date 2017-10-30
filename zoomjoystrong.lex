@@ -1,8 +1,8 @@
 /*****************************************************************
-flex file that defines the tokens 
+Flex file that defines the tokens.
  
  @author Joshua Crum & Patton Finley
- @version October 2017
+ @version 30 October 2017
  *****************************************************************/
 
 %{

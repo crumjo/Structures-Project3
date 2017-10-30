@@ -109,6 +109,13 @@
 	/** function to catch yyerrors and handle them */
     void yyerror(const char *s);
     
+    void draw_point(int x, int y);
+    void draw_line(int x1, int y1, int x2, int y2);
+    void draw_circle(int x, int y, int r);
+    void draw_rectangle(int x, int y, int w, int h);
+    void set_draw_color(int r, int g, int b);
+    void end_draw();
+    
 	/** char yytext */
     extern char* yytext;
 
@@ -133,13 +140,13 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 31 "zoomjoystrong.y"
+#line 38 "zoomjoystrong.y"
 {
     int d;
     float f;
 }
 /* Line 193 of yacc.c.  */
-#line 143 "zoomjoystrong.tab.c"
+#line 150 "zoomjoystrong.tab.c"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -152,7 +159,7 @@ typedef union YYSTYPE
 
 
 /* Line 216 of yacc.c.  */
-#line 156 "zoomjoystrong.tab.c"
+#line 163 "zoomjoystrong.tab.c"
 
 #ifdef short
 # undef short
@@ -365,18 +372,18 @@ union yyalloc
 #endif
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  22
+#define YYFINAL  19
 /* YYLAST -- Last index in YYTABLE.  */
 #define YYLAST   29
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  12
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  9
+#define YYNNTS  10
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  17
+#define YYNRULES  15
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  37
+#define YYNSTATES  40
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
@@ -422,26 +429,26 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3,     7,     9,    12,    14,    16,    18,    20,
-      22,    24,    26,    28,    32,    38,    43,    49
+       0,     0,     3,     6,     8,    11,    13,    15,    17,    19,
+      21,    26,    33,    39,    46,    52
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-      13,     0,    -1,    14,     3,     4,    -1,    15,    -1,    15,
-      14,    -1,    10,    -1,    11,    -1,    16,    -1,    17,    -1,
-      18,    -1,    19,    -1,    20,    -1,     4,    -1,     5,    10,
-      10,    -1,     6,    10,    10,    10,    10,    -1,     7,    10,
-      10,    10,    -1,     8,    10,    10,    10,    10,    -1,     9,
-      10,    10,    10,    -1
+      13,     0,    -1,    14,    21,    -1,    15,    -1,    15,    14,
+      -1,    16,    -1,    17,    -1,    18,    -1,    19,    -1,    20,
+      -1,     5,    10,    10,     4,    -1,     6,    10,    10,    10,
+      10,     4,    -1,     7,    10,    10,    10,     4,    -1,     8,
+      10,    10,    10,    10,     4,    -1,     9,    10,    10,    10,
+       4,    -1,     3,     4,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    52,    52,    54,    55,    59,    60,    61,    62,    63,
-      64,    65,    66,    70,    82,    93,   103,   114
+       0,    59,    59,    61,    62,    66,    67,    68,    69,    70,
+      74,    77,    80,    83,    86,    88
 };
 #endif
 
@@ -453,7 +460,7 @@ static const char *const yytname[] =
   "$end", "error", "$undefined", "END", "END_STATEMENT", "POINT", "LINE",
   "CIRCLE", "RECTANGLE", "SET_COLOR", "INT", "FLOAT", "$accept", "program",
   "statement_list", "statement", "point", "line", "circle", "rectangle",
-  "set_color", 0
+  "set_color", "end", 0
 };
 #endif
 
@@ -471,14 +478,14 @@ static const yytype_uint16 yytoknum[] =
 static const yytype_uint8 yyr1[] =
 {
        0,    12,    13,    14,    14,    15,    15,    15,    15,    15,
-      15,    15,    15,    16,    17,    18,    19,    20
+      16,    17,    18,    19,    20,    21
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     3,     1,     2,     1,     1,     1,     1,     1,
-       1,     1,     1,     3,     5,     4,     5,     4
+       0,     2,     2,     1,     2,     1,     1,     1,     1,     1,
+       4,     6,     5,     6,     5,     2
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -486,33 +493,33 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       0,    12,     0,     0,     0,     0,     0,     5,     6,     0,
-       0,     3,     7,     8,     9,    10,    11,     0,     0,     0,
-       0,     0,     1,     0,     4,    13,     0,     0,     0,     0,
-       2,     0,    15,     0,    17,    14,    16
+       0,     0,     0,     0,     0,     0,     0,     0,     3,     5,
+       6,     7,     8,     9,     0,     0,     0,     0,     0,     1,
+       0,     2,     4,     0,     0,     0,     0,     0,    15,    10,
+       0,     0,     0,     0,     0,    12,     0,    14,    11,    13
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     9,    10,    11,    12,    13,    14,    15,    16
+      -1,     6,     7,     8,     9,    10,    11,    12,    13,    21
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -5
+#define YYPACT_NINF -6
 static const yytype_int8 yypact[] =
 {
-      -4,    -5,    -2,    -1,     0,     1,     2,    -5,    -5,    13,
-      11,    -4,    -5,    -5,    -5,    -5,    -5,     5,     6,     7,
-       8,     9,    -5,    16,    -5,    -5,    12,    14,    15,    17,
-      -5,    18,    -5,    19,    -5,    -5,    -5
+      -5,    -4,    -3,    -2,    -1,     0,     5,     8,    -5,    -6,
+      -6,    -6,    -6,    -6,     2,     3,     4,     6,     7,    -6,
+      11,    -6,    -6,    14,     9,    10,    12,    13,    -6,    -6,
+      15,    17,    16,    20,    23,    -6,    24,    -6,    -6,    -6
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -5,    -5,    10,    -5,    -5,    -5,    -5,    -5,    -5
+      -6,    -6,    21,    -6,    -6,    -6,    -6,    -6,    -6,    -6
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -522,26 +529,26 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-       1,     2,     3,     4,     5,     6,     7,     8,    17,    18,
-      19,    20,    21,    22,    23,    25,    26,    27,    28,    29,
-      30,    24,    31,     0,    32,    33,     0,    34,    35,    36
+       1,     2,     3,     4,     5,    19,    14,    15,    16,    17,
+      18,    20,    23,    24,    25,    28,    26,    27,    29,    30,
+      31,    35,    32,    33,    37,    34,    36,    38,    39,    22
 };
 
-static const yytype_int8 yycheck[] =
+static const yytype_uint8 yycheck[] =
 {
-       4,     5,     6,     7,     8,     9,    10,    11,    10,    10,
-      10,    10,    10,     0,     3,    10,    10,    10,    10,    10,
-       4,    11,    10,    -1,    10,    10,    -1,    10,    10,    10
+       5,     6,     7,     8,     9,     0,    10,    10,    10,    10,
+      10,     3,    10,    10,    10,     4,    10,    10,     4,    10,
+      10,     4,    10,    10,     4,    10,    10,     4,     4,     8
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     4,     5,     6,     7,     8,     9,    10,    11,    13,
-      14,    15,    16,    17,    18,    19,    20,    10,    10,    10,
-      10,    10,     0,     3,    14,    10,    10,    10,    10,    10,
-       4,    10,    10,    10,    10,    10,    10
+       0,     5,     6,     7,     8,     9,    13,    14,    15,    16,
+      17,    18,    19,    20,    10,    10,    10,    10,    10,     0,
+       3,    21,    14,    10,    10,    10,    10,    10,     4,     4,
+      10,    10,    10,    10,    10,     4,    10,     4,     4,     4
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1355,77 +1362,39 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 13:
-#line 70 "zoomjoystrong.y"
-    {
-															//checks to see if its a valid location
-															//prints error if it is out of range
-                                                            if ((yyvsp[(2) - (3)].d) > WIDTH || (yyvsp[(3) - (3)].d) > HEIGHT) {
-                                                                printf("%s", msg);
-                                                            } else {
-																//prints the point
-                                                                point((yyvsp[(2) - (3)].d), (yyvsp[(3) - (3)].d));
-                                                            }
-                                                        ;}
+        case 10:
+#line 74 "zoomjoystrong.y"
+    { draw_point((yyvsp[(2) - (4)].d), (yyvsp[(3) - (4)].d)); ;}
+    break;
+
+  case 11:
+#line 77 "zoomjoystrong.y"
+    { draw_line((yyvsp[(2) - (6)].d), (yyvsp[(3) - (6)].d), (yyvsp[(4) - (6)].d), (yyvsp[(5) - (6)].d)); ;}
+    break;
+
+  case 12:
+#line 80 "zoomjoystrong.y"
+    { draw_circle((yyvsp[(2) - (5)].d), (yyvsp[(3) - (5)].d), (yyvsp[(4) - (5)].d)); ;}
+    break;
+
+  case 13:
+#line 83 "zoomjoystrong.y"
+    { draw_rectangle((yyvsp[(2) - (6)].d), (yyvsp[(3) - (6)].d), (yyvsp[(4) - (6)].d), (yyvsp[(5) - (6)].d)); ;}
     break;
 
   case 14:
-#line 82 "zoomjoystrong.y"
-    {
-															//checks to see if the line is within range
-                                                            if ((yyvsp[(2) - (5)].d) > WIDTH || (yyvsp[(3) - (5)].d) > HEIGHT || (yyvsp[(4) - (5)].d) > WIDTH || (yyvsp[(5) - (5)].d) > HEIGHT) {
-																//prints error message if not in bounds
-                                                                printf("%s", msg);
-                                                            } else {
-																//prints the line 
-                                                                line((yyvsp[(2) - (5)].d), (yyvsp[(3) - (5)].d), (yyvsp[(4) - (5)].d), (yyvsp[(5) - (5)].d));
-                                                            }
-                                                        ;}
+#line 86 "zoomjoystrong.y"
+    { set_draw_color((yyvsp[(2) - (5)].d), (yyvsp[(3) - (5)].d), (yyvsp[(4) - (5)].d)); ;}
     break;
 
   case 15:
-#line 93 "zoomjoystrong.y"
-    {	//checks to see if the circle is within valid range
-                                                            if ((yyvsp[(2) - (4)].d) > WIDTH || (yyvsp[(3) - (4)].d) > HEIGHT) {
-																//prints error message if not in bound
-                                                                printf("%s", msg);
-                                                            } else {
-																//prints the circle
-                                                                circle((yyvsp[(2) - (4)].d), (yyvsp[(3) - (4)].d), (yyvsp[(4) - (4)].d));
-                                                            }
-                                                        ;}
-    break;
-
-  case 16:
-#line 103 "zoomjoystrong.y"
-    {
-															//checks to see if the rectangle is within valed range
-                                                            if ((yyvsp[(2) - (5)].d) > WIDTH || (yyvsp[(3) - (5)].d) > HEIGHT) {
-																//prints error message if not in bound
-                                                                printf("%s", msg);
-                                                            } else {
-																//prints the rectangle
-                                                                rectangle((yyvsp[(2) - (5)].d), (yyvsp[(3) - (5)].d), (yyvsp[(4) - (5)].d), (yyvsp[(5) - (5)].d));
-                                                            }
-                                                        ;}
-    break;
-
-  case 17:
-#line 114 "zoomjoystrong.y"
-    {	//checks if the color is a valid color
-                                                            if ((yyvsp[(2) - (4)].d) > 255 || (yyvsp[(3) - (4)].d) > 255 || (yyvsp[(4) - (4)].d) > 255) {
-																//prints an error if the color is outside of the color wheel
-                                                                printf("Enter a value between 0 and 255.\n");
-                                                            } else {
-																//changes the color
-                                                                set_color((yyvsp[(2) - (4)].d), (yyvsp[(3) - (4)].d), (yyvsp[(4) - (4)].d));
-                                                            }
-                                                        ;}
+#line 88 "zoomjoystrong.y"
+    { end_draw(); ;}
     break;
 
 
 /* Line 1267 of yacc.c.  */
-#line 1429 "zoomjoystrong.tab.c"
+#line 1398 "zoomjoystrong.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1639,7 +1608,7 @@ yyreturn:
 }
 
 
-#line 124 "zoomjoystrong.y"
+#line 90 "zoomjoystrong.y"
 
 
 /*****************************************************************
@@ -1665,6 +1634,99 @@ void yyerror (char const *s)
 {
 	fprintf (stderr, "TOKEN: %s\n", yytext);
 	fprintf (stderr, "%s\n", s);
+}
+
+
+/*****************************************************************
+ 
+ *****************************************************************/
+void draw_point(int x, int y)
+{
+    //checks to see if its a valid location
+    //prints error if it is out of range
+    if (x > WIDTH || y > HEIGHT) {
+        printf("%s", msg);
+    } else {
+        //prints the point
+        point(x, y);
+    }
+
+}
+
+
+/*****************************************************************
+ 
+ *****************************************************************/
+void draw_line(int x1, int y1, int x2, int y2)
+{
+    //checks to see if the line is within range
+    if (x1 > WIDTH || y1 > HEIGHT || x2 > WIDTH ||
+    y2 > HEIGHT) {
+        //prints error message if not in bounds
+        printf("%s", msg);
+    } else {
+        //prints the line
+        line(x1, y1, x2, y2);
+    }
+
+}
+
+
+/*****************************************************************
+ 
+ *****************************************************************/
+void draw_circle(int x, int y, int r)
+{
+    //checks to see if the circle is within valid range
+    if (x > WIDTH || y > HEIGHT) {
+        //prints error message if not in bound
+        printf("%s", msg);
+    } else {
+        //prints the circle
+        circle(x, y, r);
+    }
+}
+
+
+/*****************************************************************
+ 
+ *****************************************************************/
+void draw_rectangle(int x, int y, int w, int h)
+{
+    //checks to see if the rectangle is within valed range
+    if (x > WIDTH || y > HEIGHT) {
+        //prints error message if not in bound
+        printf("%s", msg);
+    } else {
+        //prints the rectangle
+        rectangle(x, y, w, h);
+    }
+}
+
+
+/*****************************************************************
+ 
+ *****************************************************************/
+void set_draw_color(int r, int g, int b)
+{
+    //checks if the color is a valid color
+    if (r > 255 || g > 255 || b > 255) {
+        //prints an error if the color is outside of the color wheel
+        printf("Enter a value between 0 and 255.\n");
+    } else {
+        //changes the color
+        set_color(r, g, b);
+    }
+}
+
+
+/*****************************************************************
+ 
+ *****************************************************************/
+void end_draw()
+{
+    finish();
+    exit(0);
 }
 
 
