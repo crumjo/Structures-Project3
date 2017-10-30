@@ -1,6 +1,6 @@
 /*****************************************************************
  Bison file that defines the grammer of zoomjoystrong the next
- greatest painting tool for the computer
+ greatest painting tool for the computer.
  
  @author Joshua Crum & Patton Finley
  @version October 2017
@@ -13,15 +13,17 @@
 	
 	/** Name */
     int yylex();
+    
 	/** char array to tell people the range of the screen */
-    char* msg = "Point out of range. Enter a " + 
-		"height within 0 and 768 and a width within 0 and 1024.\n";
+    char* msg = "Out of range. Enter a y within 0 "
+    "and 768 and an x within 0 and 1024.\n";
+        
 	/** function to catch yyerrors and handle them */
     void yyerror(const char *s);
+    
 	/** char yytext */
     extern char* yytext;
 %}
-
 
 %start program
 
@@ -30,6 +32,7 @@
     int d;
     float f;
 }
+
 //defines tokens used in zoomjoystrong.h 
 %token END
 %token END_STATEMENT
@@ -121,7 +124,7 @@ set_color:  SET_COLOR INT INT INT                       {	//checks if the color 
 %%
 
 /*****************************************************************
- main method that starts the paint app zoomjoystrong
+ Main method that starts the paint app zoomjoystrong.
  
  @param int argc
  @param char** argv
@@ -135,7 +138,7 @@ int main(int argc, char** argv)
 
 /*****************************************************************
  yyerror that takes in a char location and prints that there was an
- error
+ error.
  
  @param char const *s char array that is located at x
  *****************************************************************/

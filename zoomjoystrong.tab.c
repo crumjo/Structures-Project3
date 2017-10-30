@@ -92,13 +92,24 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 1 "zoomjoystrong.y"
+#line 8 "zoomjoystrong.y"
 
+	//includes stdio.h for statements from c langauge
     #include <stdio.h>
+	//incudles the zoomjoystrong methods
     #include "zoomjoystrong.h"
+	
+	/** Name */
     int yylex();
-    char* msg = "Point out of range. Enter a height within 0 and 768 and a width within 0 and 1024.\n";
+    
+	/** char array to tell people the range of the screen */
+    char* msg = "Out of range. Enter a y within 0 "
+    "and 768 and an x within 0 and 1024.\n";
+        
+	/** function to catch yyerrors and handle them */
     void yyerror(const char *s);
+    
+	/** char yytext */
     extern char* yytext;
 
 
@@ -122,13 +133,13 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 12 "zoomjoystrong.y"
+#line 31 "zoomjoystrong.y"
 {
     int d;
     float f;
 }
 /* Line 193 of yacc.c.  */
-#line 132 "zoomjoystrong.tab.c"
+#line 143 "zoomjoystrong.tab.c"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -141,7 +152,7 @@ typedef union YYSTYPE
 
 
 /* Line 216 of yacc.c.  */
-#line 145 "zoomjoystrong.tab.c"
+#line 156 "zoomjoystrong.tab.c"
 
 #ifdef short
 # undef short
@@ -429,8 +440,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    31,    31,    32,    33,    36,    37,    38,    39,    40,
-      41,    42,    43,    46,    54,    62,    70,    78
+       0,    52,    52,    54,    55,    59,    60,    61,    62,    63,
+      64,    65,    66,    70,    82,    93,   103,   114
 };
 #endif
 
@@ -1345,55 +1356,68 @@ yyreduce:
   switch (yyn)
     {
         case 13:
-#line 46 "zoomjoystrong.y"
+#line 70 "zoomjoystrong.y"
     {
+															//checks to see if its a valid location
+															//prints error if it is out of range
                                                             if ((yyvsp[(2) - (3)].d) > WIDTH || (yyvsp[(3) - (3)].d) > HEIGHT) {
                                                                 printf("%s", msg);
                                                             } else {
+																//prints the point
                                                                 point((yyvsp[(2) - (3)].d), (yyvsp[(3) - (3)].d));
                                                             }
                                                         ;}
     break;
 
   case 14:
-#line 54 "zoomjoystrong.y"
+#line 82 "zoomjoystrong.y"
     {
+															//checks to see if the line is within range
                                                             if ((yyvsp[(2) - (5)].d) > WIDTH || (yyvsp[(3) - (5)].d) > HEIGHT || (yyvsp[(4) - (5)].d) > WIDTH || (yyvsp[(5) - (5)].d) > HEIGHT) {
+																//prints error message if not in bounds
                                                                 printf("%s", msg);
                                                             } else {
+																//prints the line 
                                                                 line((yyvsp[(2) - (5)].d), (yyvsp[(3) - (5)].d), (yyvsp[(4) - (5)].d), (yyvsp[(5) - (5)].d));
                                                             }
                                                         ;}
     break;
 
   case 15:
-#line 62 "zoomjoystrong.y"
-    {
+#line 93 "zoomjoystrong.y"
+    {	//checks to see if the circle is within valid range
                                                             if ((yyvsp[(2) - (4)].d) > WIDTH || (yyvsp[(3) - (4)].d) > HEIGHT) {
+																//prints error message if not in bound
                                                                 printf("%s", msg);
                                                             } else {
+																//prints the circle
                                                                 circle((yyvsp[(2) - (4)].d), (yyvsp[(3) - (4)].d), (yyvsp[(4) - (4)].d));
                                                             }
                                                         ;}
     break;
 
   case 16:
-#line 70 "zoomjoystrong.y"
+#line 103 "zoomjoystrong.y"
     {
+															//checks to see if the rectangle is within valed range
                                                             if ((yyvsp[(2) - (5)].d) > WIDTH || (yyvsp[(3) - (5)].d) > HEIGHT) {
+																//prints error message if not in bound
                                                                 printf("%s", msg);
                                                             } else {
+																//prints the rectangle
                                                                 rectangle((yyvsp[(2) - (5)].d), (yyvsp[(3) - (5)].d), (yyvsp[(4) - (5)].d), (yyvsp[(5) - (5)].d));
                                                             }
                                                         ;}
     break;
 
   case 17:
-#line 78 "zoomjoystrong.y"
-    {
+#line 114 "zoomjoystrong.y"
+    {	//checks if the color is a valid color
                                                             if ((yyvsp[(2) - (4)].d) > 255 || (yyvsp[(3) - (4)].d) > 255 || (yyvsp[(4) - (4)].d) > 255) {
+																//prints an error if the color is outside of the color wheel
                                                                 printf("Enter a value between 0 and 255.\n");
                                                             } else {
+																//changes the color
                                                                 set_color((yyvsp[(2) - (4)].d), (yyvsp[(3) - (4)].d), (yyvsp[(4) - (4)].d));
                                                             }
                                                         ;}
@@ -1401,7 +1425,7 @@ yyreduce:
 
 
 /* Line 1267 of yacc.c.  */
-#line 1405 "zoomjoystrong.tab.c"
+#line 1429 "zoomjoystrong.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1615,15 +1639,28 @@ yyreturn:
 }
 
 
-#line 86 "zoomjoystrong.y"
+#line 124 "zoomjoystrong.y"
 
 
+/*****************************************************************
+ Main method that starts the paint app zoomjoystrong.
+ 
+ @param int argc
+ @param char** argv
+ *****************************************************************/
 int main(int argc, char** argv)
 {
+	//launches zoomjoystrong
 	setup();
 	return(yyparse());
 }
 
+/*****************************************************************
+ yyerror that takes in a char location and prints that there was an
+ error.
+ 
+ @param char const *s char array that is located at x
+ *****************************************************************/
 void yyerror (char const *s)
 {
 	fprintf (stderr, "TOKEN: %s\n", yytext);
