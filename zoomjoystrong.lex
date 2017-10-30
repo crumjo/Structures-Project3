@@ -1,5 +1,5 @@
 /*****************************************************************
-Flex file that defines the tokens.
+Flex file that returns the tokens.
  
  @author Joshua Crum & Patton Finley
  @version 30 October 2017

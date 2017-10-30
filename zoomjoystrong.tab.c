@@ -94,21 +94,19 @@
 /* Copy the first part of user declarations.  */
 #line 8 "zoomjoystrong.y"
 
-	//includes stdio.h for statements from c langauge
     #include <stdio.h>
-	//incudles the zoomjoystrong methods
     #include "zoomjoystrong.h"
 	
-	/** Name */
     int yylex();
     
-	/** char array to tell people the range of the screen */
-    char* msg = "Out of range. Enter a y within 0 "
-    "and 768 and an x within 0 and 1024.\n";
+	/** String to tell people the range of the screen. */
+    char* msg = "Out of range. Enter an 'x' value within 0 and "
+    "1024 and a 'y' value within 0 and 768.\n";
         
-	/** function to catch yyerrors and handle them */
+	/** Function to catch yyerrors and handle them. */
     void yyerror(const char *s);
     
+    /** Function definitions. */
     void draw_point(int x, int y);
     void draw_line(int x1, int y1, int x2, int y2);
     void draw_circle(int x, int y, int r);
@@ -116,7 +114,6 @@
     void set_draw_color(int r, int g, int b);
     void end_draw();
     
-	/** char yytext */
     extern char* yytext;
 
 
@@ -140,13 +137,13 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 38 "zoomjoystrong.y"
+#line 34 "zoomjoystrong.y"
 {
     int d;
     float f;
 }
 /* Line 193 of yacc.c.  */
-#line 150 "zoomjoystrong.tab.c"
+#line 147 "zoomjoystrong.tab.c"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -159,7 +156,7 @@ typedef union YYSTYPE
 
 
 /* Line 216 of yacc.c.  */
-#line 163 "zoomjoystrong.tab.c"
+#line 160 "zoomjoystrong.tab.c"
 
 #ifdef short
 # undef short
@@ -447,8 +444,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    59,    59,    61,    62,    66,    67,    68,    69,    70,
-      74,    77,    80,    83,    86,    88
+       0,    53,    53,    55,    56,    59,    60,    61,    62,    63,
+      66,    68,    70,    72,    74,    76
 };
 #endif
 
@@ -1363,38 +1360,38 @@ yyreduce:
   switch (yyn)
     {
         case 10:
-#line 74 "zoomjoystrong.y"
+#line 66 "zoomjoystrong.y"
     { draw_point((yyvsp[(2) - (4)].d), (yyvsp[(3) - (4)].d)); ;}
     break;
 
   case 11:
-#line 77 "zoomjoystrong.y"
+#line 68 "zoomjoystrong.y"
     { draw_line((yyvsp[(2) - (6)].d), (yyvsp[(3) - (6)].d), (yyvsp[(4) - (6)].d), (yyvsp[(5) - (6)].d)); ;}
     break;
 
   case 12:
-#line 80 "zoomjoystrong.y"
+#line 70 "zoomjoystrong.y"
     { draw_circle((yyvsp[(2) - (5)].d), (yyvsp[(3) - (5)].d), (yyvsp[(4) - (5)].d)); ;}
     break;
 
   case 13:
-#line 83 "zoomjoystrong.y"
+#line 72 "zoomjoystrong.y"
     { draw_rectangle((yyvsp[(2) - (6)].d), (yyvsp[(3) - (6)].d), (yyvsp[(4) - (6)].d), (yyvsp[(5) - (6)].d)); ;}
     break;
 
   case 14:
-#line 86 "zoomjoystrong.y"
+#line 74 "zoomjoystrong.y"
     { set_draw_color((yyvsp[(2) - (5)].d), (yyvsp[(3) - (5)].d), (yyvsp[(4) - (5)].d)); ;}
     break;
 
   case 15:
-#line 88 "zoomjoystrong.y"
+#line 76 "zoomjoystrong.y"
     { end_draw(); ;}
     break;
 
 
 /* Line 1267 of yacc.c.  */
-#line 1398 "zoomjoystrong.tab.c"
+#line 1395 "zoomjoystrong.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1608,7 +1605,8 @@ yyreturn:
 }
 
 
-#line 90 "zoomjoystrong.y"
+#line 78 "zoomjoystrong.y"
+
 
 
 /*****************************************************************
@@ -1624,11 +1622,12 @@ int main(int argc, char** argv)
 	return(yyparse());
 }
 
+
 /*****************************************************************
- yyerror that takes in a char location and prints that there was an
- error.
+ yyerror that takes in a char location and prints that there was
+ an error.
  
- @param char const *s char array that is located at x
+ @param char const *s char array that is located at location x.
  *****************************************************************/
 void yyerror (char const *s)
 {
@@ -1638,7 +1637,11 @@ void yyerror (char const *s)
 
 
 /*****************************************************************
+ draw_point is a helper method that takes in two int params and 
+ calls the point method from zoomjoystrong.c
  
+ @param int x positions the point x from the left.
+ @param int y positions the point y from the top.
  *****************************************************************/
 void draw_point(int x, int y)
 {
@@ -1655,7 +1658,13 @@ void draw_point(int x, int y)
 
 
 /*****************************************************************
+ draw_line is a helper method that takes in four int params and 
+ calls the line method from zoomjoystrong.c
  
+ @param int x1 positions the initial point x1 from the left.
+ @param int y1 positions the initial point y1 from the top.
+ @param int x2 positions the final point x2 from the left.
+ @param int y3 positions the final point y2 from the top.
  *****************************************************************/
 void draw_line(int x1, int y1, int x2, int y2)
 {
@@ -1673,7 +1682,12 @@ void draw_line(int x1, int y1, int x2, int y2)
 
 
 /*****************************************************************
+ draw_circle is a helper method that takes in three int params and 
+ calls the circle method from zoomjoystrong.c
  
+ @param int x positions the initial point x from the left.
+ @param int y positions the initial point y from the top.
+ @param int r determines the radius of the circle.
  *****************************************************************/
 void draw_circle(int x, int y, int r)
 {
@@ -1689,7 +1703,13 @@ void draw_circle(int x, int y, int r)
 
 
 /*****************************************************************
+ draw_rectangle is a helper method that takes in four int params and 
+ calls the rectangle method from zoomjoystrong.c
  
+ @param int x positions the initial point x from the left.
+ @param int y positions the initial point y from the top.
+ @param int w determines the width of the rectangle.
+ @param int h determines the height of the rectangle.
  *****************************************************************/
 void draw_rectangle(int x, int y, int w, int h)
 {
@@ -1705,13 +1725,18 @@ void draw_rectangle(int x, int y, int w, int h)
 
 
 /*****************************************************************
+ set_draw_color is a helper method that takes in four int params and 
+ calls the set_color method from zoomjoystrong.c
  
+ @param int r determines how strong of a red color is used.
+ @param int g determines how strong of a green color is used.
+ @param int b determines how strong of a blue color is used.
  *****************************************************************/
 void set_draw_color(int r, int g, int b)
 {
     //checks if the color is a valid color
     if (r > 255 || g > 255 || b > 255) {
-        //prints an error if the color is outside of the color wheel
+        //prints an error if the color is outside of the rgb range
         printf("Enter a value between 0 and 255.\n");
     } else {
         //changes the color
@@ -1721,12 +1746,12 @@ void set_draw_color(int r, int g, int b)
 
 
 /*****************************************************************
- 
+ end_draw is a helper method that calls the finish method from 
+ zoomjoystrong and ends the program.
  *****************************************************************/
 void end_draw()
 {
     finish();
     exit(0);
 }
-
 

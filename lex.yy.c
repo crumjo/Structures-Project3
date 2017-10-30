@@ -477,10 +477,10 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "zoomjoystrong.lex"
 /*****************************************************************
-flex file that defines the tokens 
+Flex file that returns the tokens.
  
  @author Joshua Crum & Patton Finley
- @version October 2017
+ @version 30 October 2017
  *****************************************************************/
 #line 9 "zoomjoystrong.lex"
 	#include <stdio.h>
