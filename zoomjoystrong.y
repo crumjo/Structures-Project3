@@ -94,7 +94,7 @@ int main(int argc, char** argv)
  yyerror that takes in a char location and prints that there was an
  error.
  
- @param char const *s char array that is located at x
+ @param char const *s char array that is located at location x.
  *****************************************************************/
 void yyerror (char const *s)
 {
@@ -104,8 +104,11 @@ void yyerror (char const *s)
 
 
 /*****************************************************************
+ draw_point is a helper method that takes in two int params and 
+ calls the point method from zoomjoystrong.
  
- @param
+ @param int x positions the point x from the left.
+ @param int y positions the point y from the top.
  *****************************************************************/
 void draw_point(int x, int y)
 {
@@ -122,7 +125,13 @@ void draw_point(int x, int y)
 
 
 /*****************************************************************
+ draw_line is a helper method that takes in four int params and 
+ calls the line method from zoomjoystrong.
  
+ @param int x1 positions the initial point x1 from the left.
+ @param int y1 positions the initial point y1 from the top.
+ @param int x2 positions the final point x2 from the left.
+ @param int y3 positions the final point y2 from the top.
  *****************************************************************/
 void draw_line(int x1, int y1, int x2, int y2)
 {
@@ -140,7 +149,12 @@ void draw_line(int x1, int y1, int x2, int y2)
 
 
 /*****************************************************************
+ draw_circle is a helper method that takes in three int params and 
+ calls the circle method from zoomjoystrong.
  
+ @param int x positions the initial point x from the left.
+ @param int y positions the initial point y from the top.
+ @param int r determines the radius of the circle.
  *****************************************************************/
 void draw_circle(int x, int y, int r)
 {
@@ -156,7 +170,13 @@ void draw_circle(int x, int y, int r)
 
 
 /*****************************************************************
+ draw_rectangle is a helper method that takes in four int params and 
+ calls the rectangle method from zoomjoystrong.
  
+ @param int x positions the initial point x from the left.
+ @param int y positions the initial point y from the top.
+ @param int w determines the width of the rectangle.
+ @param int h determines the height of the rectangle.
  *****************************************************************/
 void draw_rectangle(int x, int y, int w, int h)
 {
@@ -172,7 +192,12 @@ void draw_rectangle(int x, int y, int w, int h)
 
 
 /*****************************************************************
+ set_draw_color is a helper method that takes in four int params and 
+ calls the set_color method from zoomjoystrong.
  
+ @param int r determines how strong of a red color is used.
+ @param int g determines how strong of a green color is used.
+ @param int b determines how strong of a blue color is used.
  *****************************************************************/
 void set_draw_color(int r, int g, int b)
 {
@@ -188,7 +213,8 @@ void set_draw_color(int r, int g, int b)
 
 
 /*****************************************************************
- 
+ end_draw is a helper method that calls the finish method from 
+ zoomjoystrong and ends the program.
  *****************************************************************/
 void end_draw()
 {
